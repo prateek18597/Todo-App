@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/css/todo.css", type="text/css")
+        script(src="/js/jquery.min.js")
+        link(rel="stylesheet", href="/css/bootstrap.min.css", type="text/css")
+        script(src="/js/bootstrap.min.js")
+        title Todo App
+    body
+        .container.main
+            .card-deck
+                .card.bg-primary
+                    .card-body.text-center
+                        h4.card-title
+                            b To Do
+                        button.btn.btn-dark.btnMargin(data-toggle="modal", data-target="#addTodoModal", style="margin-buttom:2vh;") Add Task
+                        .tasksCard
+                            if todoTasks.length > 0
+                                each task in todoTasks
+                                    .card.bg-light.tasksGap
+                                        .card-header.text-center
+                                            .card-title 
+                                            b #{task.title}
+                                        .card-body.text-center
+                                            p.card-text #{task.description}
+                            else
+                                .card.bg-light.tasksGap
+                                        .card-body.text-center
+                                            p.card-text No Tasks
+                .card.bg-warning
+                    .card-body.text-center
+                        h4.card-title
+                            b Doing
+                        button.btn.btn-dark.btnMargin(data-toggle="modal", data-target="#addDoingModal") Add Task
+                        .tasksCard
+                            if doingTasks.length > 0
+                                each task in doingTasks
+                                    .card.bg-light.tasksGap
+                                        .card-header.text-center
+                                            .card-title 
+                                            b #{task.title}
+                                        .card-body.text-center
+                                            p.card-text #{task.description}
+                            else
+                                .card.bg-light.tasksGap
+                                        .card-body.text-center
+                                            p.card-text No Tasks
+                .card.bg-success
+                    .card-body.text-center
+                        h4.card-title 
+                            b Done
+                        button.btn.btn-dark.btnMargin(data-toggle="modal", data-target="#addDoneModal") Add Task
+                        .tasksCard
+                            if doneTasks.length > 0
+                                each task in doneTasks
+                                    .card.bg-light.tasksGap
+                                        .card-header.text-center
+                                            .card-title 
+                                            b #{task.title}
+                                        .card-body.text-center
+                                            p.card-text #{task.description}
+                            else
+                                .card.bg-light.tasksGap
+                                        .card-body.text-center
+                                            p.card-text No Tasks
+        div.modal.fade(id="addTodoModal", role="dialog")
+            .modal-dialog
+                .modal-content
+                    .modal-header
+                        h4 Todo Task
+                    .modal-body
+                        form(action="/addTodo", method="POST")
+                            .form-group
+                                label(for="title") Title
+                                input.form-control(type="text", name="title")
+                            .form-group
+                                label(for="description") Description
+                                textarea.form-control(type="text", name="description")
+                            button.btn.btn-dark.btn-block(type="submit", style="float:right;") Add
+
+        div.modal.fade(id="addDoingModal", role="dialog")
+            .modal-dialog
+                .modal-content
+                    .modal-header
+                        h4 Todo Task
+                    .modal-body
+                        form(action="/addDoing", method="POST")
+                            .form-group
+                                label(for="title") Title
+                                input.form-control(type="text", name="title")
+                            .form-group
+                                label(for="description") Description
+                                textarea.form-control(type="text", name="description")
+                            button.btn.btn-dark.btn-block(type="submit", style="float:right;") Add
+
+        div.modal.fade(id="addDoneModal", role="dialog")
+            .modal-dialog
+                .modal-content
+                    .modal-header
+                        h4 Todo Task
+                    .modal-body
+                        form(action="/addDone", method="POST")
+                            .form-group
+                                label(for="title") Title
+                                input.form-control(type="text", name="title")
+                            .form-group
+                                label(for="description") Description
+                                textarea.form-control(type="text", name="description")
+                            button.btn.btn-dark.btn-block(type="submit", style="float:right;") Add
+                            

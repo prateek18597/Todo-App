@@ -1,0 +1,20 @@
+.main{
+    margin-top: 5%;
+}
+
+.tasksGap{
+    margin-top: 2.5vh;
+}
+
+.btnMargin{
+    margin-bottom: 2.5vh;
+}
+
+.tasksCard{
+    height: 75vh;
+    overflow-y: auto;
+}
+
+.tasksCard::-webkit-scrollbar {
+    display: none;
+  }

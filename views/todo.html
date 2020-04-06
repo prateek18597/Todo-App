@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Card</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/todo.css" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <!-- <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>    
+  <script>
+    const config = {
+    apiKey: "AIzaSyDValQEv5P6sEeyWNQEqNElZqRf3iGAlmE",
+    authDomain: "webapps-d5e93.firebaseapp.com",
+    databaseURL: "https://webapps-d5e93.firebaseio.com",
+    projectId: "webapps-d5e93",
+    storageBucket: "webapps-d5e93.appspot.com",
+    messagingSenderId: "668918477590",
+    appId: "1:668918477590:web:c76d6c66ce4ca0aa1f5637"
+    };
+    firebase.initializeApp(config);
+</script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
+<script src="todo.js"></script> -->
+</head>
+<body> 
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-center">
+    <a class="navbar-brand" href="#">Pratik Parmar</a>
+</nav>
+<h1>Pratik Parmar</h1>
+<div class="container main">
+  <div class="card-deck">
+    <div class="card bg-primary">
+      <div class="card-body text-center">
+        <h4 class="card-title">To Do</h4>
+        <button class="btn btn-dark">Add Task</button>
+        <div class="card bg-light">
+            <div class="card-body text-center">
+              <p class="card-text">{{t.value}}</p>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="card bg-warning">
+      <div class="card-body text-center">
+        <h4 class="card-title">Doing</h4>
+        <div class="card bg-light">
+            <div class="card-body text-center">
+              <p class="card-text">{{t.value}}</p>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="card bg-success">
+      <div class="card-body text-center">
+        <h4 class="card-title">Done</h4>
+        <div class="card bg-light">
+            <div class="card-body text-center">
+              <p class="card-text">{{t.value}}</p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
