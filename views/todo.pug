@@ -7,6 +7,7 @@ html(lang="en")
         script(src="/js/jquery.min.js")
         link(rel="stylesheet", href="/css/bootstrap.min.css", type="text/css")
         script(src="/js/bootstrap.min.js")
+        link(rel="stylesheet",href="https://use.fontawesome.com/releases/v5.7.0/css/all.css",integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ",crossorigin="anonymous")
         title Todo App
     body
         .container.main
@@ -20,11 +21,24 @@ html(lang="en")
                             if todoTasks.length > 0
                                 each task in todoTasks
                                     .card.bg-light.tasksGap
-                                        .card-header.text-center
+                                        .card-header.text-left
                                             .card-title 
-                                            b #{task.title}
+                                                b #{task.title}
+                                                    div(style="float:right")
+                                                        form(action="/deleteTask", method="post")
+                                                            input(type="hidden", name="id", value=task.id)
+                                                            input(type="hidden", name="list", value="todoTasks")
+                                                            button.btn.btn-sm.btn-danger
+                                                                i.fa.fa-trash
                                         .card-body.text-center
                                             p.card-text #{task.description}
+                                            div(style="float:right")
+                                                form(action="/shiftTask", method="post")
+                                                    input(type="hidden", name="id", value=task.id) 
+                                                    input(type="hidden", name="from", value="todoTasks")
+                                                    input(type="hidden", name="to", value="doingTasks")
+                                                    button(type="submit") 
+                                                        i.fas.fa-chevron-circle-right
                             else
                                 .card.bg-light.tasksGap
                                         .card-body.text-center
@@ -38,11 +52,32 @@ html(lang="en")
                             if doingTasks.length > 0
                                 each task in doingTasks
                                     .card.bg-light.tasksGap
-                                        .card-header.text-center
+                                        .card-header.text-left
                                             .card-title 
-                                            b #{task.title}
+                                                b #{task.title}
+                                                div(style="float:right")
+                                                    form(action="/deleteTask", method="post")
+                                                        input(type="hidden", name="id", value=task.id)
+                                                        input(type="hidden", name="list", value="doingTasks")
+                                                        button.btn.btn-sm.btn-danger
+                                                            i.fa.fa-trash
                                         .card-body.text-center
                                             p.card-text #{task.description}
+                                            .text-center.flexdiv
+                                                div(style="float:left")
+                                                    form(action="/shiftTask", method="post")
+                                                        input(type="hidden", name="id", value=task.id) 
+                                                        input(type="hidden", name="from", value="doingTasks")
+                                                        input(type="hidden", name="to", value="todoTasks")
+                                                        button(type="submit") 
+                                                            i.fas.fa-chevron-circle-left
+                                                div(style="float:right")    
+                                                    form(action="/shiftTask", method="post")
+                                                        input(type="hidden", name="id", value=task.id) 
+                                                        input(type="hidden", name="from", value="doingTasks")
+                                                        input(type="hidden", name="to", value="doneTasks")
+                                                        button(type="submit") 
+                                                            i.fas.fa-chevron-circle-right
                             else
                                 .card.bg-light.tasksGap
                                         .card-body.text-center
@@ -56,11 +91,24 @@ html(lang="en")
                             if doneTasks.length > 0
                                 each task in doneTasks
                                     .card.bg-light.tasksGap
-                                        .card-header.text-center
+                                        .card-header.text-left
                                             .card-title 
-                                            b #{task.title}
+                                                b #{task.title}
+                                                div(style="float:right")
+                                                    form(action="/deleteTask", method="post")
+                                                        input(type="hidden", name="id", value=task.id)
+                                                        input(type="hidden", name="list", value="doneTasks")
+                                                        button.btn.btn-sm.btn-danger
+                                                            i.fa.fa-trash
                                         .card-body.text-center
                                             p.card-text #{task.description}
+                                            div(style="float:left")
+                                                form(action="/shiftTask", method="post")
+                                                    input(type="hidden", name="id", value=task.id) 
+                                                    input(type="hidden", name="from", value="doneTasks")
+                                                    input(type="hidden", name="to", value="doingTasks")
+                                                    button(type="submit") 
+                                                        i.fas.fa-chevron-circle-left
                             else
                                 .card.bg-light.tasksGap
                                         .card-body.text-center

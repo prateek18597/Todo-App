@@ -8,9 +8,9 @@ exports.getTodoPage = (req,res,next) => {
         tasks = data;
         res.render(path.join(__dirname,"..","views","todo"),
         {
-            "todoTasks":tasks.todoTasks,
-            "doingTasks":tasks.doingTasks,
-            "doneTasks":tasks.doneTasks
+            "todoTasks" :   tasks.todoTasks,
+            "doingTasks":   tasks.doingTasks,
+            "doneTasks" :   tasks.doneTasks
         });
     });
 }
@@ -33,3 +33,16 @@ exports.addDone = (req,res,next) => {
     res.redirect("/");
 }
 
+exports.shiftTask = (req,res,next) => {
+    Task.shift(req.body.id,req.body.from,req.body.to,()=>{
+        console.log("Shift Complete.");
+    });
+    res.redirect("/");
+}
+
+exports.deleteTask = (req,res,next) => {
+    Task.deleteTask(req.body.id,req.body.list,()=>{
+        console.log("Delete Complete.");
+    });
+    res.redirect("/");
+}

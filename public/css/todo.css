@@ -11,10 +11,15 @@
 }
 
 .tasksCard{
-    height: 75vh;
+    height: 60vh;
     overflow-y: auto;
 }
 
 .tasksCard::-webkit-scrollbar {
     display: none;
-  }
+}
+
+.flexDiv{
+    display: flex;
+    flex-direction: row;
+}
